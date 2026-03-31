@@ -1,88 +1,71 @@
-# Student Grade Manager
+Student Grade Manager
 
-A console-based Java application to manage student grades, calculate CGPA, and save data to a file.
 
----
+A simple Java console app I built to solve something that actually annoyed me — keeping track of marks across multiple subjects and never knowing my actual CGPA until the semester ended.
+Nothing fancy. Just a menu you can interact with, enter your subjects and marks, and it gives you your grade and CGPA on the spot. Data saves to a CSV file so you don't lose it.
 
-## Features
+Why I made this
+Every semester I'd be manually adding up marks in a calculator or a rough Excel sheet. Wanted something cleaner that just works from the terminal. This does that.
 
-- Add students with name, roll number, and semester
-- Add subjects with marks and credit hours
-- Auto-calculates percentage, letter grade, and CGPA
-- View individual student report card
-- View summary table of all students
-- Save and load data from a CSV file
+What it can do
 
----
+Add multiple students (useful if you're tracking friends too)
+Add subjects with marks obtained, total marks, and credit hours
+Automatically figures out your percentage, letter grade (A+, A, B...) and CGPA
+View a proper report card per student
+See a summary table of all students at once
+Save everything to a CSV file and load it back next time
 
-## How to Run
 
-### Requirements
-- Java 17 or higher
-
-### Compile
-
-```bash
-cd src
+How to run it
+You need Java 17 or above installed. Check with:
+bashjava -version
+Then compile and run:
+bashcd src
 javac com/grademanager/*.java
-```
-
-### Run
-
-```bash
 java com.grademanager.Main
-```
+Or if you're running it from the root folder directly:
+bashcd "C:\path\to\GradeManager\src" && javac com/grademanager/*.java && java com.grademanager.Main
+The data/ folder gets created automatically when you save. No setup needed.
 
-Make sure a `data/` folder exists in the directory where you run the program — it will be created automatically if missing.
-
----
-
-## Project Structure
-
-```
+Project structure
 GradeManager/
 ├── src/
 │   └── com/grademanager/
-│       ├── Main.java          # Menu-driven console UI
-│       ├── Student.java       # Student class with CGPA logic
-│       ├── Subject.java       # Subject class with grade calculation
-│       └── FileHandler.java   # CSV file read/write
+│       ├── Main.java          # menu, user input, all the flow control
+│       ├── Student.java       # stores subjects, calculates CGPA
+│       ├── Subject.java       # stores marks, computes grade and percentage
+│       └── FileHandler.java   # reads and writes the CSV file
 └── data/
-    └── grades.csv             # Auto-generated on save
-```
+    └── grades.csv             # gets created when you hit Save
 
----
-
-## Sample Output
-
-```
+Sample output
 ========================================
-  Name       : Arjun Sharma
+  Name       : Rahul Sharma
   Roll No    : 22BCE1234
   Semester   : Sem 3
 ========================================
 
-  Subject                   | Marks         | Percent  | Grade    | Credits
-  ------------------------------------------------------------------------
-  Data Structures           |   82.0 / 100  |  82.0%   | A        | 4
-  Mathematics III           |   74.0 / 100  |  74.0%   | B        | 4
-  Operating Systems         |   91.0 / 100  |  91.0%   | A+       | 3
-  ------------------------------------------------------------------------
-  Overall Percentage : 82.33%
+  Subject                   Marks           %       Grade   Credits
+  --------------------------------------------------------------
+  Mathematics               78.0/100.0     78.0%    B       4 credits
+  Java Programming          91.0/100.0     91.0%    A+      3 credits
+  --------------------------------------------------------------
+  Overall Percentage : 84.50%
   CGPA               : 8.86 / 10.0
 ========================================
-```
 
----
+Java concepts used
+ConceptWhere it shows upClasses and ObjectsStudent, Subject, FileHandler each handle one thingEncapsulationAll fields are private, accessed through getters/settersArrayListUsed to store the list of students and subjectsFile I/OBufferedReader and BufferedWriter in FileHandler.javaException handlingtry/catch around file operations and Scanner inputString methodssplit(), trim(), equalsIgnoreCase() for CSV parsingLambda expressionremoveIf() used to delete a subject by name
 
-## Java Concepts Used
+Known limitations
 
-| Concept | Where |
-|---|---|
-| OOP — Classes & Inheritance | `Student`, `Subject` |
-| Encapsulation | Private fields + getters/setters |
-| Collections — ArrayList | Storing subjects and students |
-| File I/O — BufferedReader/Writer | `FileHandler.java` |
-| String manipulation | CSV parsing, formatted output |
-| Exception handling | try/catch for file and input errors |
+File save doesn't work on online compilers (no real filesystem) — everything else does
+No database, just a plain CSV file
+Built for single-user use, not multi-user
+
+
+Made by — Mirzaa736
+Course: Programming in Java
+Submitted: March 2026
 
