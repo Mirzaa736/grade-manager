@@ -108,6 +108,6 @@ GradeManager/
 
 ---
 
-*Made by — Mirzaa736*  
+*Made by — Mirza Deyan*  
 *Course: Programming in Java*  
 *Submitted: March 2026*
